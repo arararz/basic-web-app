@@ -22,6 +22,21 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("minus")) {
+    const regex = /\d+/g;
+    const matches = query.match(regex);
+
+    if (matches) {
+      if (matches.length == 2) {
+        const numbers = matches.map(Number);
+        const difference = numbers[0] - numbers[1];
+        return difference.toString();
+      } else if (matches.length === 1) {
+        return matches[0];
+      }
+    }
+  }
+
   if (query.toLowerCase().includes("multiplied")) {
     const regex = /\d+/g;
     const matches = query.match(regex);
