@@ -19,5 +19,14 @@ export default function QueryProcessor(query: string): string {
     );
   }
 
+  const regex = /\d+/g;
+  const matches = query.match(regex);
+
+  if (matches && matches.length >= 2) {
+    // Assuming you want to add the first two numbers found
+    const sum = parseInt(matches[0], 10) + parseInt(matches[1], 10);
+    return sum.toString();
+  }
+
   return "";
 }
