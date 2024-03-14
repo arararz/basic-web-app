@@ -65,5 +65,22 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("primes")) {
+    const regex = /\d+/g;
+    const matches = query.match(regex);
+
+    if (matches) {
+      // return the numbers that are primes
+      const numbers = matches.map(Number);
+      const result = numbers.filter((num) => {
+        for (let i = 2, s = Math.sqrt(num); i <= s; i++)
+          if (num % i === 0) return false;
+        return num > 1;
+      });
+      const sorted_res = result.sort((a, b) => a - b);
+      return sorted_res.join(", ");
+    }
+  }
+
   return "";
 }
