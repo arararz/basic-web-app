@@ -43,9 +43,7 @@ export default function QueryProcessor(query: string): string {
 
     if (matches) {
       if (matches.length == 2) {
-        const numbers = matches.map(Number);
-        const res = Math.pow(numbers[0], numbers[1]);
-        return res.toString();
+        return (BigInt(matches[0])**BigInt(matches[1])).toString();
       } else if (matches.length === 1) {
         return matches[0];
       }
