@@ -12,8 +12,9 @@ export default function QueryProcessor(query: string): string {
     const matches = query.match(regex);
 
     if (matches) {
-      if (matches.length == 2) {
-        const sum = parseInt(matches[0], 10) + parseInt(matches[1], 10);
+      if (matches.length >= 2) {
+        const numbers = matches.map(Number);
+        const sum = numbers.reduce((a, b) => a + b, 0);
         return sum.toString();
       } else if (matches.length === 1) {
         return matches[0];
@@ -26,8 +27,9 @@ export default function QueryProcessor(query: string): string {
     const matches = query.match(regex);
 
     if (matches) {
-      if (matches.length == 2) {
-        const product = parseInt(matches[0], 10) * parseInt(matches[1], 10);
+      if (matches.length >= 2) {
+        const numbers = matches.map(Number);
+        const product = numbers.reduce((a, b) => a * b, 1);
         return product.toString();
       } else if (matches.length === 1) {
         return matches[0];
