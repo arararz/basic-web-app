@@ -60,8 +60,8 @@ export default function QueryProcessor(query: string): string {
         const cubeRoot = Math.cbrt(num);
         return squareRoot % 1 === 0 && cubeRoot % 1 === 0;
       });
-      result.sort((a, b) => a - b);
-      return result.join(", ");
+      const sorted_res = result.sort((a, b) => a - b);
+      return sorted_res.join(", ");
     }
   }
 
