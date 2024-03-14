@@ -14,7 +14,7 @@ export default function QueryProcessor(query: string): string {
     if (matches.length == 2) {
       // Adding the first two numbers found
       const sum = parseInt(matches[0], 10) + parseInt(matches[1], 10);
-      return `The sum is: ${sum}`;
+      return sum.toString();
     } else if (matches.length === 1) {
       // If only one number is found, just return it
       return matches[0];
@@ -25,7 +25,7 @@ export default function QueryProcessor(query: string): string {
       // Convert all matches to numbers and find the maximum
       const numbers = matches.map(Number); // Convert strings to numbers
       const maxNumber = Math.max(...numbers);
-      return `The largest number is: ${maxNumber}`;
+      return maxNumber.toString();
     }
   }
 
