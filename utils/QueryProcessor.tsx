@@ -48,5 +48,21 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("square")) {
+    const regex = /\d+/g;
+    const matches = query.match(regex);
+
+    if (matches) {
+      // return the numbers that are both a square and a cube
+      const numbers = matches.map(Number);
+      const result = numbers.filter((num) => {
+        const squareRoot = Math.sqrt(num);
+        const cubeRoot = Math.cbrt(num);
+        return squareRoot % 1 === 0 && cubeRoot % 1 === 0;
+      });
+      return result.join(", ");
+    }
+  }
+
   return "";
 }
